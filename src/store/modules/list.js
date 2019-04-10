@@ -34,7 +34,6 @@ const list = {
         }, params) {
             return new Promise((resolve, reject) => {
                 getList(params).then(resp => {
-                  console.log('respp',resp);
                     commit(GET_LIST, resp)
                     return resolve()
                 }).catch(err => {
