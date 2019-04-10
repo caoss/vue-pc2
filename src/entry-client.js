@@ -60,7 +60,7 @@ router.onReady(() => {
       return next()
     }
 
-    bar.start()
+    bar.start()//进度条
 
     Promise.all(asyncDataHooks.map(hook => hook({
         store,

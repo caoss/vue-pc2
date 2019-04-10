@@ -1,37 +1,5 @@
 <template>
   <footer id="footer">
-    <div class="top">
-      <div class="left top-item">
-        <h2>合作伙伴</h2>
-        <hr>
-        <ul>
-          <li>腾讯云</li>
-          <li>腾讯开发平台</li>
-          <li>微信广告</li>
-          <li>NIKE专卖店</li>
-        </ul>
-      </div>
-      <div class="center top-item">
-        <h2>FAQ</h2>
-        <hr>
-        <ul>
-          <li>如何搭建一个vue ssr环境？</li>
-          <li>有没有像vue-cli那样开箱即用的脚手架？</li>
-          <li>如何部署以及与后端结合？</li>
-          <li>vue 3.0 什么时候发布？</li>
-        </ul>
-      </div>
-      <div class="right top-item">
-        <h2>联系方式</h2>
-        <hr>
-        <ul>
-          <li>微博：<a class="weiboLink" target="_blank" href="https://weibo.com/Neveryu">https://weibo.com/Neveryu</a></li>
-          <li>邮件：<a class="emailLink" target="_blank" href="mailto:never_yu@qq.com?cc=never_yu@qq.com&bcc=never_yu@qq.com&subject=From%20your%20travel%20site%20power%20by%20vue%20and%20prerender!">never_yu@qq.com</a></li>
-          <li>地址：宝安中心-壹方城-L3-覔书店</li>
-          <li>留言：<a class="guestbook" target="_blank" href="https://neveryu.github.io/guestbook">https://neveryu.github.io/guestbook</a></li>
-        </ul>
-      </div>
-    </div>
     <div class="bottom">
       Copyright© 2018 - {{nowYear}} | Author <a class="authorLink" href="https://neveryu.github.io/neveryu/">Never Yu</a> | All Rights Reserved | Power by <a class="vueLink" href="javascript:;">Vue</a> & <a class="vueLink" href="javascript:;">SSR</a>
     </div>
