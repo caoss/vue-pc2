@@ -32,89 +32,106 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 export default {
-  name: 'detail',
+  name: "detail",
   title() {
-    return 'Detail ' + this.res.item.id
+    return "Detail " + this.res.item.id;
   },
-  asyncData ({ store, route }) {
+  asyncData({ store, route }) {
     // 触发 action 后，会返回 Promise
-    return store.dispatch('fetchItem', route.params.id)
+    return store.dispatch("fetchItem", route.params.id);
   },
   methods: {
     _filter(item) {
-      let _item = JSON.parse(JSON.stringify(item))
-      delete _item.id
-      return _item
+      let _item = JSON.parse(JSON.stringify(item));
+      delete _item.id;
+      return _item;
     },
     handerFirstPage() {
-      this.$router.push({ path: '/detail/1' })
+      this.$router.push({ path: "/detail/1" });
     },
     handerPrevPage() {
-      let _current = this.$route.params.id
-      if(_current > 1) {
-        this.$router.push({ path: `/detail/${_current - 1}` })
+      let _current = this.$route.params.id;
+      if (_current > 1) {
+        this.$router.push({ path: `/detail/${_current - 1}` });
       }
     },
     handerNextPage() {
-      let _current = this.$route.params.id
-      if(_current >= this.res.total) {
-
+      let _current = this.$route.params.id;
+      if (_current >= this.res.total) {
       } else {
-        this.$router.push({ path: `/detail/${parseInt(_current) + 1}` })
+        this.$router.push({ path: `/detail/${parseInt(_current) + 1}` });
       }
     },
     handerLastPage() {
-      this.$router.push({ path: `/detail/${this.res.total}` })
+      this.$router.push({ path: `/detail/${this.res.total}` });
     }
   },
   computed: {
     // 使用对象展开运算符将 getter 混入 computed 对象中
     ...mapGetters({
-      res: 'getDetail'
+      res: "getDetail"
     })
   }
-}
+};
 </script>
 
 <style scoped lang="stylus">
-#detail
-  ul
-    width 500px
-    margin 0 auto
-  .item
-    list-style none
-    border 1px solid #ccc
-    width 500px
-    height 40px
-    line-height 40px
-    .b
-      font-weight 600
-    .name
-      display inline-block
-      text-align center
-      width 100px
-      border-right 1px solid #ccc
-    .result
-      display inline-block
-      width 399px
-      text-align center
-  .paganation
-    width 500px
-    margin 20px auto 0
-    text-align center
-    .item
-      margin 0 10px
-      cursor pointer
-      border none
-      color #f36
-      &:hover
-        color #f69
-        font-weight bolder
-    .current-page
-      width 30px
-      height 20px
-      line-height 20px
-      text-align center
+#detail {
+  ul {
+    width: 500px;
+    margin: 0 auto;
+  }
+
+  .item {
+    list-style: none;
+    border: 1px solid #ccc;
+    width: 500px;
+    height: 40px;
+    line-height: 40px;
+
+    .b {
+      font-weight: 600;
+    }
+
+    .name {
+      display: inline-block;
+      text-align: center;
+      width: 100px;
+      border-right: 1px solid #ccc;
+    }
+
+    .result {
+      display: inline-block;
+      width: 399px;
+      text-align: center;
+    }
+  }
+
+  .paganation {
+    width: 500px;
+    margin: 20px auto 0;
+    text-align: center;
+
+    .item {
+      margin: 0 10px;
+      cursor: pointer;
+      border: none;
+      color: #f36;
+
+      &:hover {
+        color: #f69;
+        font-weight: bolder;
+      }
+    }
+
+    .current-page {
+      width: 30px;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+    }
+  }
+}
 </style>

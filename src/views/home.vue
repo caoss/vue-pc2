@@ -1,6 +1,6 @@
 <template>
   <div id="home">
-    <p class="title">这是 HOME 页</p>
+    <p class="title">这是 HOME 页 {{ total }} </p>
     <p class="description">本页面包含的核心关键数据，是服务端计算得出，然后附加到当前渲染上下文中；不是前端通过 ajax 请求获取的。</p>
     <ul>
       <li>注册总人数： <span class="red"> {{ totalRegister }} </span></li>
@@ -12,7 +12,7 @@
 </template>
 <script>
 import { init } from '../api/home'
-import { mapGetters } from 'vuex'
+import { mapGetters,mapActions } from 'vuex'
 export default {
   // 服务端路由进来时，就会触发这个函数
   // 触发请求，服务端获取数据，存到vuex中
@@ -28,18 +28,50 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(
+      //带有命名空间的写法
+      "list",
+      {
+        lists: "list",
+        total: "total"
+      }
+    ),
     // 使用对象展开运算符将 getter 混入 computed 对象中
-    ...mapGetters([
+    ...mapGetters(
+      [
       'totalRegister',
-      'topMouthActiver'
-    ]),
+      'topMouthActiver',
+      ]
+   ),
     totalActiver() {
       return this.$store.getters.totalActiver
     },
     todayLogin() {
       return this.$store.getters.todayLogin
     }
+  },
+  created() {
+    this.getData();
+  },
+  methods: {
+    //在组件中分发 Action
+    // ...mapActions([
+    //   "getList" //将this.login映射为 this.$store.dispatch('login')，触发store中actions-login方法
+    // ]),
+    ...mapActions(
+      //带有命名空间的写法、namespace:true
+      "list",
+      {
+        getList: "getList",
+      }
+    ),
+    // 登录操作
+    getData() {
+      this.getList({ pageNo: 1, pageSize: 10 });
+    },
+   
   }
+
 }
 </script>
 
