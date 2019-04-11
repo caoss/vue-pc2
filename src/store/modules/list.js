@@ -11,7 +11,7 @@ const EDIT_SUCCESS = 'EDIT_SUCCESS'
 const list = {
     namespaced: true,
     state: {
-        resp: {},
+        resp: {name:'c'},
     },
     mutations: {
         [GET_LIST](state,resp) {
@@ -34,6 +34,7 @@ const list = {
         }, params) {
             return new Promise((resolve, reject) => {
                 getList(params).then(resp => {
+                  console.log('resp',resp);
                     commit(GET_LIST, resp)
                     return resolve()
                 }).catch(err => {
